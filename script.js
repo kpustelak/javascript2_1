@@ -16,26 +16,21 @@
 
   cw1.addEventListener("click", function () {
     answer.innerHTML = "Loading…";
-    fetch("https://jsonplaceholder.typicode.com/posts ")
+    fetch("https://jsonplaceholder.typicode.com/posts/" + select.value)
       .then((response) => response.json())
-      .then((array) => {
-        console.log(array);
-        let html = "";
-        array.forEach((item) => {
-          html +=
-            "<ul>" +
-            "<li>" +
-            item.id +
-            "</li>" +
-            "<li>" +
-            item.title +
-            "</li>" +
-            "<li>" +
-            item.body +
-            "</li>" +
-            "</ul>";
-        });
-        answer.innerHTML = html;
+      .then((item) => {
+        answer.innerHTML =
+          "<ul>" +
+          "<li>" +
+          item.id +
+          "</li>" +
+          "<li>" +
+          item.title +
+          "</li>" +
+          "<li>" +
+          item.body +
+          "</li>" +
+          "</ul>";
       });
   });
 
