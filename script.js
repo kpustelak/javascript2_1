@@ -15,22 +15,18 @@
   });
 
   cw1.addEventListener("click", function () {
-    answer.innerHTML = "Loading…";
-    fetch("https://jsonplaceholder.typicode.com/posts/" + select.value)
+    fetch("https://jsonplaceholder.typicode.com/posts/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: 123123,
+        title: "dsandlksandlkas",
+        body: "ndosndsandjsandsakj",
+      }),
+    })
       .then((response) => response.json())
       .then((item) => {
-        answer.innerHTML =
-          "<ul>" +
-          "<li>" +
-          item.id +
-          "</li>" +
-          "<li>" +
-          item.title +
-          "</li>" +
-          "<li>" +
-          item.body +
-          "</li>" +
-          "</ul>";
+        answer.innerHTML = "Dodano nowy post o ID = " + item.id;
       });
   });
 
